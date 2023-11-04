@@ -23,19 +23,23 @@ int	main(int argc, char **argv)
 		while (argv[i])
 		{
 			j = 0;
+			while (argv[i][j] == ' ')
+				j++;
 			while (argv[i][j])
 			{	
-				std::cout << static_cast<char>(std::toupper(argv[i][j]));
-				j++;
-			}
-			/*for (int j = 0; argv[i][j]; j++)
-			{
-				std::cout << static_cast<char>(std::toupper(argv[i][j]));
-				j++;
-			}*/
-			std::cout<< " ";
+				if (argv[i][j] == ' ' && (argv[i][j + 1] == ' ' || argv[i][j + 1] == '\0'))
+					j++;
+				else
+				{
+					std::cout << (char)(std::toupper(argv[i][j]));
+					j++;
+				}
+			} 
+			if (i != argc - 1)
+				std::cout<< " ";
 			i++;
-		}			
+		}
+		std::cout << std::endl;			
 	}
 	return (0);
 }
