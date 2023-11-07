@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:16:30 by imontero          #+#    #+#             */
-/*   Updated: 2023/11/07 15:41:04 by codespace        ###   ########.fr       */
+/*   Updated: 2023/11/07 23:43:46 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,48 @@
 
 class Contact 
 {
-public:
+    public:
+		//default constructors
+        Contact();
 
-	Contact() : 
-	first_name(""), last_name(""), nickname(""), phone_number(""), darkest_secret("") {}
-	
-	Contact(const std::string& first, const std::string& last, const std::string& nick, const std::string& phone, const std::string& secret): 
-	first_name(first), last_name(last), nickname(nick), phone_number(phone), darkest_secret(secret) {}
+        Contact(const std::string& first, const std::string& last, const std::string& nick, const std::string& phone, const std::string& secret); 
 
-    // Getters
-    std::string getFirstName() const { return first_name; }
-    std::string getLastName() const { return last_name; }
-    std::string getNickname() const { return nickname; }
+        // Getters
+        std::string getFirstName() const;
+        std::string getLastName() const;
+        std::string getNickname() const;
+		std::string getPhoneNumber() const;
+	    std::string getDarkestSecret() const;
 
         // Display contact details
-    void displayContact(int index) const {
-        std::cout << std::setw(10) << index << " | " << std::setw(10) << truncateString(first_name, 10) << " | "
-                  << std::setw(10) << truncateString(last_name, 10) << " | " << std::setw(10) << truncateString(nickname, 10) << std::endl;
-    }
+        void displayContact(int index) const;
+       
+    private:
+    
+        std::string first_name;
+        std::string last_name;
+        std::string nickname;
+        std::string phone_number;
+        std::string darkest_secret;
+
+        std::string truncateString(const std::string& str, int width) const;
 
 };
 
 class Phonebook
 {
+    public:
+		PhoneBook();
 
-    
+        bool addContact(const Contact& contact);
+        
+        void displayContacts() const;
+        
 
-
+    private:
+        Contact contacts[8];
+        int contact_count;
+        int oldest_contact_index = 0;
 };
-
-
 
 #endif
