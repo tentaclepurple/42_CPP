@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:16:30 by imontero          #+#    #+#             */
-/*   Updated: 2023/11/08 10:12:31 by codespace        ###   ########.fr       */
+/*   Updated: 2023/11/08 21:18:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <iomanip>
+# include <limits>
 
 class Contact 
 {
@@ -39,7 +40,7 @@ class Contact
 	    std::string getDarkestSecret() const;
 
         // Display contact details
-        void displayContact(int index) const;
+        void displayContactIndex(int index) const;
        
     private:
     
@@ -58,15 +59,12 @@ class Phonebook
     public:
 		Phonebook();
 
-        bool addContact(const Contact& contact);
+        void addContact(const Contact& contact);
         
         void displayContacts() const;
         
-
-    private:
         Contact contacts[8];
         int contact_count;
-        int oldest_contact_index = 0;
 };
 
 #endif
