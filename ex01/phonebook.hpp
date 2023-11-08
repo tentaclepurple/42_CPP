@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:16:30 by imontero          #+#    #+#             */
-/*   Updated: 2023/11/07 23:43:46 by codespace        ###   ########.fr       */
+/*   Updated: 2023/11/08 10:12:31 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,16 @@ class Contact
     public:
 		//default constructors
         Contact();
-
+        /*  
+        constructor. Arguments passed as constant references "&". 
+        constant: the content of the std::string can´t be changed inside constructor
+        std::string& : a reference to std::string instead of a total copy of std::string itself. More memory efficient
+        */
         Contact(const std::string& first, const std::string& last, const std::string& nick, const std::string& phone, const std::string& secret); 
 
-        // Getters
+        /* Getters to access the private attributes from outside the class
+        We're not using getters in this exercise. It´s just for practice */
+        
         std::string getFirstName() const;
         std::string getLastName() const;
         std::string getNickname() const;
@@ -50,7 +56,7 @@ class Contact
 class Phonebook
 {
     public:
-		PhoneBook();
+		Phonebook();
 
         bool addContact(const Contact& contact);
         

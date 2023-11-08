@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:16:30 by imontero          #+#    #+#             */
-/*   Updated: 2023/11/07 23:15:18 by codespace        ###   ########.fr       */
+/*   Updated: 2023/11/08 10:26:09 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,11 @@ std::string Contact::getDarkestSecret() const
 
 void	Contact::displayContact(int index) const
 {
-	std::cout << std::setw(10) << index << " | " << std::setw(10) << truncateString(first_name, 10) << " | "
-		<< std::setw(10) << truncateString(last_name, 10) << " | " << std::setw(10) << truncateString(nickname, 10) << std::endl;
+	std::cout << std::setw(10) << std::right << index << " | " 
+                << std::setw(10) << std::right << truncateString(first_name, 10) << " | "
+		        << std::setw(10) << std::right << truncateString(last_name, 10) << " | " 
+                << std::setw(10) << std::right << truncateString(nickname, 10) 
+                << std::endl;
 }
 
 std::string	Contact::truncateString(const std::string& str, int width) const

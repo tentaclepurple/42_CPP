@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:47:03 by codespace         #+#    #+#             */
-/*   Updated: 2023/11/08 00:09:06 by codespace        ###   ########.fr       */
+/*   Updated: 2023/11/08 10:41:06 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static bool isValidPhoneNumber(const std::string& phone) {
 }
 
 int main() {
-    PhoneBook phoneBook;
+    Phonebook phonebook;
 
     while (true) 
     {
@@ -59,36 +59,41 @@ int main() {
                 std::cout << "Invalid input. All fields must be non-empty." << std::endl;
                 continue ;
             }
-            if (!isValidPhoneNumber(phone))
-            {
-                std::cout << "Invalid phone number. It should contain only digits and/or '+'." << std::endl;
-                continue ;
-            }
+            //check if names only contain letters
             if (!isValidName(first) || !isValidName(last))
             {
                 std::cout << "Invalid first name or last name. They should contain only letters." << std::endl;
                 continue ;
             }
+            //check if phonenumbers only contain numbers or a '+'
+            if (!isValidPhoneNumber(phone))
+            {
+                std::cout << "Invalid phone number. It should contain only digits and/or '+'." << std::endl;
+                continue ;
+            }
 
             Contact newContact(first, last, nick, phone, secret);
-            phoneBook.addContact(newContact);
+            phonebook.addContact(newContact);
         } 
         else if (command == "SEARCH") 
         {
-            phoneBook.displayContacts();
+            phonebook.displayContacts();
             int index;
             std::cout << "Enter the index of the contact to display: ";
             std::cin >> index;
 
-            if (index >= 0 && index < phoneBook.contact_count)
-                phoneBook.contacts[index].displayContact(index); // Muestra otros detalles del contacto si es necesario
+            if (index >= 0 && index < phonebook.contact_count)
+                phonebook.contacts[index].displayContact(index); // Shows contact info
             else
                 std::cout << "Invalid index." << std::endl;
         }
         else if (command == "EXIT")
             break;
         else
+        {
             std::cout << "Invalid command. Please enter ADD, SEARCH, or EXIT." << std::endl;
+            break ;
+        }
     }
 
     return (0);
