@@ -107,7 +107,7 @@ int main() {
                 std::cout << "Phonebook is empty." << std::endl;
                 continue;
             }
-            phonebook.displayContacts();
+            phonebook.displayHeader();
             int index;
             std::cout << "Enter the index of the contact to display: ";
             std::cin >> index;

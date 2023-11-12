@@ -33,7 +33,7 @@ void    Phonebook::addContact(const Contact& contact)
 }
 /* Displays all contacts header + every contact index
 in the required format. 10 wide. Right aligned */
-void    Phonebook::displayContacts() const
+void    Phonebook::displayHeader() const
 {
     std::cout << std::setw(10) << std::right << "Index" << " | " 
           << std::setw(10) << std::right << "First Name" << " | " 

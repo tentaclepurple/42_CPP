@@ -61,7 +61,7 @@ class Phonebook
 
         void addContact(const Contact& contact);
         
-        void displayContacts() const;
+        void displayHeader() const;
         
         Contact contacts[8];
         int contact_count;
