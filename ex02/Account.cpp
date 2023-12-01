@@ -13,7 +13,11 @@ void Account::_displayTimestamp(void)
 {
     // Implementación de la marca de tiempo
     // Puedes personalizar la salida de acuerdo con tus necesidades
-    std::cout << "[" << "19920104_091532" << "] ";
+    time_t	now;
+
+	now = time(NULL);
+	std::cout << std::put_time(localtime(&now), "[%Y%m%d_%H%M%S] ");
+	//std::cout << "[" << "19920104_091532" << "] ";
 }
 
 int Account::getNbAccounts(void)
