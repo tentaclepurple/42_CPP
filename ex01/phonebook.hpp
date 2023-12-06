@@ -6,7 +6,7 @@
 /*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:16:30 by imontero          #+#    #+#             */
-/*   Updated: 2023/11/12 21:06:11 by imontero         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:41:13 by imontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ class Contact
 	    std::string getDarkestSecret() const;
 
         // Display contact details
-        void displayContactIndex(int index) const;
+        void    displayContactIndex(int index) const;
+
+        void    displayContactInfo(int index) const;
        
     private:
     

@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:47:03 by codespace         #+#    #+#             */
-/*   Updated: 2023/11/08 21:23:11 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/06 10:58:08 by imontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
+
+#include <string>
 
 static bool isValidName(const std::string& name)
 {
@@ -96,7 +98,6 @@ int main() {
                 std::cout << "Invalid phone number. It should contain only digits and/or '+'." << std::endl;
                 continue ;
             }
-
             Contact newContact(first, last, nick, phone, secret);
             phonebook.addContact(newContact);
         } 
@@ -111,13 +112,26 @@ int main() {
             int index;
             std::cout << "Enter the index of the contact to display: ";
             std::cin >> index;
+            if (std::cin.fail()) {
+                std::cerr << "Invalid input. Please enter a valid index." << std::endl;
+                std::cin.clear();               //clear fail state
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clean buffer  similar to "std::cin.ignore();" two times
+                continue;
+                }
 
             if (index >= 0 && index < phonebook.contact_count)
-                phonebook.contacts[index].displayContactIndex(index); // Shows contact info
+            {
+                phonebook.contacts[index].displayContactInfo(index); // Shows contact info
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
             else
+            {
+                //std::cout << "index: " << index << "phonebook.contact_count: " << phonebook.contact_count << std::endl;
+                
                 std::cout << "Invalid index." << std::endl;
-            
-            std::cin.ignore();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                continue;
+            }
         }
     }
     return (0);

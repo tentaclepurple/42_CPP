@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:16:30 by imontero          #+#    #+#             */
-/*   Updated: 2023/11/08 21:18:12 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/06 10:42:53 by imontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,21 @@ std::string Contact::getDarkestSecret() const
 
 void	Contact::displayContactIndex(int index) const
 {
-	std::cout << std::setw(10) << std::right << index << " | " 
+    std::cout << std::setw(10) << std::right << index << " | " 
                 << std::setw(10) << std::right << truncateString(first_name, 10) << " | "
 		        << std::setw(10) << std::right << truncateString(last_name, 10) << " | " 
                 << std::setw(10) << std::right << truncateString(nickname, 10) 
                 << std::endl;
+}
+    
+void    Contact::displayContactInfo(int index) const
+{
+    std::cout << "Contact index: " << index << std::endl
+            << "First name: " << this->first_name << std::endl
+            << "Last name: " << this->last_name << std::endl
+            << "Nickname: " << this->nickname << std::endl
+            << "Telephone: " << this->phone_number << std::endl
+            << "Darkest secret: " << this->darkest_secret << std::endl;
 }
 
 std::string	Contact::truncateString(const std::string& str, int width) const
